@@ -1,0 +1,94 @@
+server:
+  address: 0.0.0.0
+  port: 8190
+  sessionTimeout: 3600
+
+cdn:  # CDN的配置参考：https://doc.oinone.top/backend/62.html
+  oss:
+    name: MINIO
+    type: MINIO
+    bucket: pamirs
+    uploadUrl: http://xxxx
+    downloadUrl: http://xxxx
+    accessKeyId: xxxx
+    accessKeySecret: xxxx
+    mainDir: upload/oinone-trutorials/
+    validTime: 3600000
+    timeout: 600000
+    active: true
+    referer:
+    localFolderUrl:
+
+spring:
+  application:
+    name: trutorials-boot
+  resources:
+    static-locations: classpath:/static/
+  mvc:
+    default-servlet-handling: true
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    timeout: 5000
+#    password: Abc@1234
+    jedis:
+      pool:
+        # 连接池中的最大空闲连接 默认8
+        max-idle: 16
+        # 连接池中的最小空闲连接 默认0
+        min-idle: 4
+        # 连接池最大连接数 默认8 ，负数表示没有限制
+        max-active: 16
+        # 连接池最大阻塞等待时间（使用负值表示没有限制） 默认-1
+        max-wait: 5000
+logging:
+  level:
+    root: info
+    pro.shushi.pamirs.framework.connectors.data.mapper.PamirsMapper: info
+    pro.shushi.pamirs.framework.connectors.data.mapper.GenericMapper: info # mybatis sql日志
+pamirs:
+  framework:
+    system:
+      system-ds-key: base
+    data:
+      default-ds-key: pamirs
+      ds-map:
+        base: base
+  datasource:
+    biz:
+      driverClassName: com.mysql.cj.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql://127.0.0.1:3306/trutorials_biz?useSSL=false&allowPublicKeyRetrieval=true&useServerPrepStmts=true&cachePrepStmts=true&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&autoReconnect=true&allowMultiQueries=true
+      username: root
+      password: oinone
+    pamirs:
+      driverClassName: com.mysql.cj.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql://127.0.0.1:3306/trutorials_pamirs?useSSL=false&allowPublicKeyRetrieval=true&useServerPrepStmts=true&cachePrepStmts=true&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&autoReconnect=true&allowMultiQueries=true
+      username: root
+      password: oinone
+    base:
+      driverClassName: com.mysql.cj.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql://127.0.0.1:3306/trutorials_base?useSSL=false&allowPublicKeyRetrieval=true&useServerPrepStmts=true&cachePrepStmts=true&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&autoReconnect=true&allowMultiQueries=true
+      username: root
+      password: oinone
+  zookeeper:
+    zkConnectString: 127.0.0.1:2181
+    zkSessionTimeout: 60000
+    rootPath: /trutorials
+  boot:
+    modules:
+      - base
+      - common
+      - sequence
+      - message
+      - business
+      - file
+      - resource
+      - user
+      - auth
+      - management_center
+      - apps
+      - sys_setting
