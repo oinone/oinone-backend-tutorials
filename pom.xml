@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>pro.shushi.oinone.trutorials</groupId>
     <artifactId>oinone-trutorials</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>6.2.1</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -24,13 +24,13 @@
         <spring.boot.version>2.3.8.RELEASE</spring.boot.version>
 
         <!-- 平台基础 -->
-        <pamirs.middleware.version>6.2.0</pamirs.middleware.version>
-        <pamirs.k2.version>6.2.0</pamirs.k2.version>
-        <pamirs.framework.version>6.2.0</pamirs.framework.version>
-        <pamirs.boot.version>6.2.0</pamirs.boot.version>
+        <pamirs.middleware.version>6.2.1</pamirs.middleware.version>
+        <pamirs.k2.version>6.2.1</pamirs.k2.version>
+        <pamirs.framework.version>6.2.1</pamirs.framework.version>
+        <pamirs.boot.version>6.2.1</pamirs.boot.version>
 
         <!-- 平台功能 -->
-        <pamirs.core.version>6.2.0</pamirs.core.version>
+        <pamirs.core.version>6.2.1</pamirs.core.version>
 
         <oinone.trutorials.version>1.0.0-SNAPSHOT</oinone.trutorials.version>
     </properties>
