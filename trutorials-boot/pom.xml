@@ -43,11 +43,6 @@
             <groupId>pro.shushi.pamirs.core</groupId>
             <artifactId>pamirs-auth3-rbac-view</artifactId>
         </dependency>
-        <!-- auth compatible -->
-        <dependency>
-            <groupId>pro.shushi.pamirs.core</groupId>
-            <artifactId>pamirs-auth-compatible</artifactId>
-        </dependency>
         <!-- management center -->
         <dependency>
             <groupId>pro.shushi.pamirs.core</groupId>
