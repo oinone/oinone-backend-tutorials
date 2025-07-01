@@ -19,39 +19,12 @@
         </dependency>
         <dependency>
             <groupId>pro.shushi.pamirs.boot</groupId>
-            <artifactId>pamirs-boot-modules</artifactId>
+            <artifactId>pamirs-boot-standard</artifactId>
         </dependency>
         <dependency>
             <groupId>pro.shushi.pamirs.boot</groupId>
             <artifactId>pamirs-distribution-id</artifactId>
         </dependency>
-        <dependency>
-            <groupId>pro.shushi.pamirs.boot</groupId>
-            <artifactId>pamirs-meta-ui</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>pro.shushi.pamirs.boot</groupId>
-            <artifactId>pamirs-boot-standard</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>pro.shushi.pamirs.boot</groupId>
-            <artifactId>pamirs-boot-ui</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>pro.shushi.pamirs.framework</groupId>
-            <artifactId>pamirs-connectors-data-api</artifactId>
-        </dependency>
-
-        <!-- 用户 -->
-        <dependency>
-            <groupId>pro.shushi.pamirs.core</groupId>
-            <artifactId>pamirs-user-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>pro.shushi.pamirs.core</groupId>
-            <artifactId>pamirs-user-view</artifactId>
-        </dependency>
-        <!--end-->
 
         <!-- auth -->
         <dependency>
@@ -73,6 +46,11 @@
         <!-- auth compatible -->
         <dependency>
             <groupId>pro.shushi.pamirs.core</groupId>
+            <artifactId>pamirs-auth-compatible</artifactId>
+        </dependency>
+        <!-- management center -->
+        <dependency>
+            <groupId>pro.shushi.pamirs.core</groupId>
             <artifactId>pamirs-management-center</artifactId>
         </dependency>
 
@@ -80,17 +58,17 @@
             <groupId>pro.shushi.pamirs.core</groupId>
             <artifactId>pamirs-resource-core</artifactId>
         </dependency>
-        <dependency>
-            <groupId>pro.shushi.pamirs.core</groupId>
-            <artifactId>pamirs-channel-core</artifactId>
+       <dependency>
+           <groupId>pro.shushi.pamirs.core</groupId>
+           <artifactId>pamirs-user-core</artifactId>
+       </dependency>
+       <dependency>
+           <groupId>pro.shushi.pamirs.core</groupId>
+           <artifactId>pamirs-user-view</artifactId>
         </dependency>
         <dependency>
             <groupId>pro.shushi.pamirs.core</groupId>
             <artifactId>pamirs-message-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>pro.shushi.pamirs.core</groupId>
-            <artifactId>pamirs-international</artifactId>
         </dependency>
         <dependency>
             <groupId>pro.shushi.pamirs.core</groupId>
@@ -100,45 +78,19 @@
             <groupId>pro.shushi.pamirs.core</groupId>
             <artifactId>pamirs-business-view</artifactId>
         </dependency>
-        <dependency>
-            <groupId>pro.shushi.pamirs.core</groupId>
-            <artifactId>pamirs-file2-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>pro.shushi.pamirs.core</groupId>
-            <artifactId>pamirs-translate</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>pro.shushi.pamirs.core</groupId>
-            <artifactId>pamirs-eip2-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>pro.shushi.pamirs.core</groupId>
-            <artifactId>pamirs-eip2-view</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>pro.shushi.pamirs.core</groupId>
-            <artifactId>pamirs-trigger-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>pro.shushi.pamirs.core</groupId>
-            <artifactId>pamirs-trigger-bridge-tbschedule</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>pro.shushi.pamirs.core</groupId>
             <artifactId>pamirs-expression-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>pro.shushi.pamirs.framework</groupId>
-            <artifactId>pamirs-connectors-event</artifactId>
-        </dependency>
-        <dependency>
             <groupId>pro.shushi.pamirs.core</groupId>
             <artifactId>pamirs-apps-core</artifactId>
         </dependency>
+
         <dependency>
             <groupId>pro.shushi.pamirs.core</groupId>
-            <artifactId>pamirs-apps-view</artifactId>
+            <artifactId>pamirs-file2-core</artifactId>
         </dependency>
         <dependency>
             <groupId>pro.shushi.pamirs.core</groupId>
@@ -148,13 +100,14 @@
             <groupId>pro.shushi.pamirs.core</groupId>
             <artifactId>pamirs-sys-setting-view</artifactId>
         </dependency>
+
         <dependency>
             <groupId>pro.shushi.pamirs.core</groupId>
-            <artifactId>pamirs-my-center-view</artifactId>
+            <artifactId>pamirs-trigger-bridge-tbschedule</artifactId>
         </dependency>
         <dependency>
             <groupId>pro.shushi.pamirs.core</groupId>
-            <artifactId>pamirs-sql-record-core</artifactId>
+            <artifactId>pamirs-trigger-core</artifactId>
         </dependency>
 
         <dependency>

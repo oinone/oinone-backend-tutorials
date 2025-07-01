@@ -92,3 +92,4 @@ pamirs:
       - management_center
       - apps
       - sys_setting
+      - trigger
