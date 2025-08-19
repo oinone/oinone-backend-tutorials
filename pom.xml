@@ -23,14 +23,16 @@
         <maven.install.version>3.0.0-M1</maven.install.version>
         <spring.boot.version>2.3.8.RELEASE</spring.boot.version>
 
+        <mysql.connector.version>8.0.16</mysql.connector.version>
+
         <!-- 平台基础 -->
-        <pamirs.middleware.version>6.2.1</pamirs.middleware.version>
-        <pamirs.k2.version>6.2.1</pamirs.k2.version>
-        <pamirs.framework.version>6.2.1</pamirs.framework.version>
-        <pamirs.boot.version>6.2.1</pamirs.boot.version>
+        <pamirs.middleware.version>6.2.12</pamirs.middleware.version>
+        <pamirs.k2.version>6.2.12</pamirs.k2.version>
+        <pamirs.framework.version>6.2.12</pamirs.framework.version>
+        <pamirs.boot.version>6.2.12</pamirs.boot.version>
 
         <!-- 平台功能 -->
-        <pamirs.core.version>6.2.1</pamirs.core.version>
+        <pamirs.core.version>6.2.12</pamirs.core.version>
 
         <oinone.trutorials.version>1.0.0-SNAPSHOT</oinone.trutorials.version>
     </properties>
@@ -76,6 +78,12 @@
                 <version>${pamirs.middleware.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.connector.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

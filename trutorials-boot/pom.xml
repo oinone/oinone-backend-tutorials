@@ -120,6 +120,11 @@
             <groupId>pro.shushi.pamirs.framework</groupId>
             <artifactId>pamirs-connectors-event-rocketmq</artifactId>
         </dependency>
+        <!-- mysql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
