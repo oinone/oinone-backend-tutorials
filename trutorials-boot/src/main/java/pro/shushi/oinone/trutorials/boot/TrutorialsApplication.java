@@ -20,10 +20,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.util.StopWatch;
 import pro.shushi.pamirs.framework.connectors.data.kv.RedisClusterConfig;
 import pro.shushi.pamirs.meta.annotation.fun.extern.Slf4j;
-import pro.shushi.pamirs.meta.api.ModelsHelper;
-import pro.shushi.pamirs.meta.base.manager.data.CodeDataManager;
-import pro.shushi.pamirs.meta.base.manager.data.FieldDataManager;
-import pro.shushi.pamirs.meta.base.manager.data.IdDataManager;
 
 import java.io.File;
 import java.io.IOException;

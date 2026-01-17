@@ -47,6 +47,8 @@ logging:
     root: info
     pro.shushi.pamirs.framework.connectors.data.mapper.PamirsMapper: info
     pro.shushi.pamirs.framework.connectors.data.mapper.GenericMapper: info # mybatis sql日志
+    RocketmqClient: error
+    org.apache.dubbo.registry.client.metadata.store.RemoteMetadataServiceImpl: off
 pamirs:
   framework:
     system:
