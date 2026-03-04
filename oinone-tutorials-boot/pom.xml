@@ -3,14 +3,19 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-     <parent>
-        <groupId>pro.shushi.oinone.trutorials</groupId>
-        <artifactId>oinone-trutorials</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+    <parent>
+        <groupId>pro.shushi.oinone</groupId>
+        <artifactId>oinone-backend-tutorials</artifactId>
+        <version>7.2.0-SNAPSHOT</version>
     </parent>
-    <artifactId>trutorials-boot</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <groupId>pro.shushi.oinone.tutorials</groupId>
+    <artifactId>oinone-tutorials-boot</artifactId>
     <packaging>jar</packaging>
+
+    <properties>
+        <lettuce.version>6.3.2.RELEASE</lettuce.version>
+        <commons-pool2.version>2.12.1</commons-pool2.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -26,44 +31,56 @@
             <artifactId>pamirs-distribution-id</artifactId>
         </dependency>
 
-        <!-- auth -->
+        <!-- rocketmq -->
         <dependency>
-            <groupId>pro.shushi.pamirs.core</groupId>
-            <artifactId>pamirs-auth3-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>pro.shushi.pamirs.core</groupId>
-            <artifactId>pamirs-auth3-view</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>pro.shushi.pamirs.core</groupId>
-            <artifactId>pamirs-auth3-rbac-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>pro.shushi.pamirs.core</groupId>
-            <artifactId>pamirs-auth3-rbac-view</artifactId>
-        </dependency>
-        <!-- management center -->
-        <dependency>
-            <groupId>pro.shushi.pamirs.core</groupId>
-            <artifactId>pamirs-management-center</artifactId>
+            <groupId>pro.shushi.pamirs.framework</groupId>
+            <artifactId>pamirs-connectors-event-rocketmq</artifactId>
         </dependency>
 
+        <!-- mysql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <!-- distribution -->
+        <dependency>
+            <groupId>pro.shushi.pamirs.distribution</groupId>
+            <artifactId>pamirs-distribution-faas</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>pro.shushi.pamirs.distribution</groupId>
+            <artifactId>pamirs-distribution-gateway</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>pro.shushi.pamirs.distribution</groupId>
+            <artifactId>pamirs-distribution-session</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>pro.shushi.pamirs.distribution</groupId>
+            <artifactId>pamirs-distribution-session-cd</artifactId>
+        </dependency>
+
+        <!-- expression -->
+        <dependency>
+            <groupId>pro.shushi.pamirs.core</groupId>
+            <artifactId>pamirs-expression-core</artifactId>
+        </dependency>
+
+        <!-- resource -->
         <dependency>
             <groupId>pro.shushi.pamirs.core</groupId>
             <artifactId>pamirs-resource-core</artifactId>
         </dependency>
-       <dependency>
-           <groupId>pro.shushi.pamirs.core</groupId>
-           <artifactId>pamirs-user-core</artifactId>
-       </dependency>
-       <dependency>
-           <groupId>pro.shushi.pamirs.core</groupId>
-           <artifactId>pamirs-user-view</artifactId>
+
+        <!-- user, business, management_center -->
+        <dependency>
+            <groupId>pro.shushi.pamirs.core</groupId>
+            <artifactId>pamirs-user-core</artifactId>
         </dependency>
         <dependency>
             <groupId>pro.shushi.pamirs.core</groupId>
-            <artifactId>pamirs-message-core</artifactId>
+            <artifactId>pamirs-user-view</artifactId>
         </dependency>
         <dependency>
             <groupId>pro.shushi.pamirs.core</groupId>
@@ -73,20 +90,44 @@
             <groupId>pro.shushi.pamirs.core</groupId>
             <artifactId>pamirs-business-view</artifactId>
         </dependency>
-
         <dependency>
             <groupId>pro.shushi.pamirs.core</groupId>
-            <artifactId>pamirs-expression-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>pro.shushi.pamirs.core</groupId>
-            <artifactId>pamirs-apps-core</artifactId>
+            <artifactId>pamirs-management-center</artifactId>
         </dependency>
 
+        <!-- message -->
+        <dependency>
+            <groupId>pro.shushi.pamirs.core</groupId>
+            <artifactId>pamirs-message-core</artifactId>
+        </dependency>
+
+        <!-- file -->
         <dependency>
             <groupId>pro.shushi.pamirs.core</groupId>
             <artifactId>pamirs-file2-core</artifactId>
         </dependency>
+
+        <!-- trigger -->
+        <dependency>
+            <groupId>pro.shushi.pamirs.core</groupId>
+            <artifactId>pamirs-trigger-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>pro.shushi.pamirs.core</groupId>
+            <artifactId>pamirs-trigger-bridge-tbschedule</artifactId>
+        </dependency>
+
+        <!-- apps -->
+        <dependency>
+            <groupId>pro.shushi.pamirs.core</groupId>
+            <artifactId>pamirs-apps-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>pro.shushi.pamirs.core</groupId>
+            <artifactId>pamirs-apps-view</artifactId>
+        </dependency>
+
+        <!-- sys_setting -->
         <dependency>
             <groupId>pro.shushi.pamirs.core</groupId>
             <artifactId>pamirs-sys-setting-core</artifactId>
@@ -97,12 +138,24 @@
         </dependency>
 
         <dependency>
-            <groupId>pro.shushi.pamirs.core</groupId>
-            <artifactId>pamirs-trigger-bridge-tbschedule</artifactId>
+            <groupId>pro.shushi.pamirs.framework</groupId>
+            <artifactId>pamirs-connectors-data-api</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>redis.clients</groupId>
+                    <artifactId>jedis</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
-            <groupId>pro.shushi.pamirs.core</groupId>
-            <artifactId>pamirs-trigger-core</artifactId>
+            <groupId>io.lettuce</groupId>
+            <artifactId>lettuce-core</artifactId>
+            <version>${lettuce.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>${commons-pool2.version}</version>
         </dependency>
 
         <dependency>
@@ -114,16 +167,6 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <!-- rocketmq -->
-        <dependency>
-            <groupId>pro.shushi.pamirs.framework</groupId>
-            <artifactId>pamirs-connectors-event-rocketmq</artifactId>
-        </dependency>
-        <!-- mysql -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
         </dependency>
     </dependencies>
 
@@ -155,6 +198,13 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -1,15 +1,17 @@
-package pro.shushi.oinone.trutorials.boot;
+package pro.shushi.oinone.tutorials.boot;
 
+import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.apache.ibatis.annotations.Mapper;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
+import org.springframework.boot.autoconfigure.data.redis.RedisReactiveAutoConfiguration;
 import org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoConfiguration;
 import org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.system.ApplicationPid;
+import org.springframework.boot.context.ApplicationPidFileWriter;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
@@ -19,10 +21,18 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.util.StopWatch;
 import pro.shushi.pamirs.meta.annotation.fun.extern.Slf4j;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
+import java.util.Arrays;
 
+/**
+ * Oinone Tutorials Boot
+ *
+ * @author oinone on 2026-03-04 00:00:00
+ */
+@Slf4j
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class, FreeMarkerAutoConfiguration.class})
+@MapperScan(value = {"pro.shushi.pamirs", "pro.shushi.oinone"}, annotationClass = Mapper.class)
 @ComponentScan(
         basePackages = {
                 "pro.shushi.pamirs",
@@ -31,23 +41,36 @@ import java.net.InetAddress;
         excludeFilters = {
                 @ComponentScan.Filter(
                         type = FilterType.ASSIGNABLE_TYPE,
-                        value = {RedisAutoConfiguration.class, RedisRepositoriesAutoConfiguration.class}
-                )
-        })
-@Slf4j
+                        value = {
+                                RedisAutoConfiguration.class,
+                                RedisRepositoriesAutoConfiguration.class,
+                                RedisReactiveAutoConfiguration.class,
+                        }
+                ),
+        }
+)
 @EnableTransactionManagement
 @EnableAsync
-@MapperScan(value = "pro.shushi", annotationClass = Mapper.class)
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class, FreeMarkerAutoConfiguration.class})
-public class TrutorialsApplication {
+@EnableDubbo
+public class TutorialsApplication {
 
     public static void main(String[] args) throws IOException {
+        log.info(Arrays.toString(args));
+
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
-        new ApplicationPid().write(new File("oinone-trutorials.pid"));
-        ConfigurableApplicationContext application = new SpringApplicationBuilder(TrutorialsApplication.class)
+
+        log.info("Oinone Tutorials App Starting ...");
+
+        System.setProperty("dubbo.application.logger", "slf4j");
+
+        ConfigurableApplicationContext application = new SpringApplicationBuilder(TutorialsApplication.class)
                 .web(WebApplicationType.SERVLET)
+                .listeners(
+                        new ApplicationPidFileWriter("oinone-tutorials-boot.pid")
+                )
                 .run(args);
+
         stopWatch.stop();
 
         Environment env = application.getEnvironment();

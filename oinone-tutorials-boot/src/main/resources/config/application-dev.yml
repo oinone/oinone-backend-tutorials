@@ -1,0 +1,35 @@
+spring.config.activate.on-profile: dev
+# 加入你的其他配置
+
+# 连接 Oinone Docker Compose 内置服务 (默认配置)
+spring:
+  data:
+    redis:
+      database: 0
+      host: 127.0.0.1
+      port: 6378
+      password: Abc@1234
+  rocketmq:
+    name-server: 127.0.0.1:19876
+dubbo:
+  registry:
+    address: zookeeper://127.0.0.1:2182
+pamirs:
+  datasource:
+    base:
+      driverClassName: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3307/oinone_base?useSSL=false&allowPublicKeyRetrieval=true&useServerPrepStmts=true&cachePrepStmts=true&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&autoReconnect=true&allowMultiQueries=true
+      username: root
+      password: Abc@1234
+    pamirs:
+      driverClassName: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3307/oinone_pamirs?useSSL=false&allowPublicKeyRetrieval=true&useServerPrepStmts=true&cachePrepStmts=true&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&autoReconnect=true&allowMultiQueries=true
+      username: root
+      password: Abc@1234
+    biz_data:
+      driverClassName: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3307/oinone_biz_data?useSSL=false&allowPublicKeyRetrieval=true&useServerPrepStmts=true&cachePrepStmts=true&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&autoReconnect=true&allowMultiQueries=true
+      username: root
+      password: Abc@1234
+  zookeeper:
+    zkConnectString: 127.0.0.1:2182

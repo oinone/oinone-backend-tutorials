@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>pro.shushi.oinone.trutorials</groupId>
-    <artifactId>oinone-trutorials</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <groupId>pro.shushi.oinone</groupId>
+    <artifactId>oinone-backend-tutorials</artifactId>
+    <version>7.2.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -24,24 +23,19 @@
         <maven.install.version>3.1.4</maven.install.version>
         <maven.deploy.version>3.1.4</maven.deploy.version>
         <maven.war.version>3.4.0</maven.war.version>
-        <spring.boot.version>3.3.13</spring.boot.version>
 
+        <spring.boot.version>3.3.13</spring.boot.version>
         <mysql.connector.version>8.0.16</mysql.connector.version>
 
-        <!-- 平台基础 -->
-        <pamirs.middleware.version>7.0.3</pamirs.middleware.version>
-        <pamirs.k2.version>7.0.3</pamirs.k2.version>
-        <pamirs.framework.version>7.0.3</pamirs.framework.version>
-        <pamirs.boot.version>7.0.3</pamirs.boot.version>
+        <!-- oinone -->
+        <oinone-pamirs.version>7.2.0</oinone-pamirs.version>
 
-        <!-- 平台通用模块 -->
-        <pamirs.core.version>7.0.3</pamirs.core.version>
-
-        <oinone.trutorials.version>1.0.0-SNAPSHOT</oinone.trutorials.version>
+        <!-- distribution -->
+        <pamirs.distribution.version>7.2.0</pamirs.distribution.version>
     </properties>
 
     <modules>
-        <module>trutorials-boot</module>
+        <module>oinone-tutorials-boot</module>
     </modules>
 
     <dependencyManagement>
@@ -49,36 +43,43 @@
             <dependency>
                 <groupId>pro.shushi.pamirs</groupId>
                 <artifactId>pamirs-k2</artifactId>
-                <version>${pamirs.k2.version}</version>
+                <version>${oinone-pamirs.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>pro.shushi.pamirs</groupId>
                 <artifactId>pamirs-framework</artifactId>
-                <version>${pamirs.framework.version}</version>
+                <version>${oinone-pamirs.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>pro.shushi.pamirs.boot</groupId>
                 <artifactId>pamirs-boot-dependencies</artifactId>
-                <version>${pamirs.boot.version}</version>
+                <version>${oinone-pamirs.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>pro.shushi.pamirs.core</groupId>
                 <artifactId>pamirs-core-dependencies</artifactId>
-                <version>${pamirs.core.version}</version>
+                <version>${oinone-pamirs.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>pro.shushi.pamirs.middleware</groupId>
+                <artifactId>pamirs-middleware-dependencies</artifactId>
+                <version>${oinone-pamirs.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
 
             <dependency>
-                <groupId>pro.shushi.pamirs.middleware</groupId>
-                <artifactId>pamirs-middleware-dependencies</artifactId>
-                <version>${pamirs.middleware.version}</version>
+                <groupId>pro.shushi.pamirs</groupId>
+                <artifactId>pamirs-distribution</artifactId>
+                <version>${pamirs.distribution.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

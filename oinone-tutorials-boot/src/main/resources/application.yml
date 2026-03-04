@@ -1,0 +1,201 @@
+server:
+  address: 0.0.0.0
+  port: 8191
+  sessionTimeout: 3600
+spring:
+  profiles:
+    active: dev
+  application:
+    name: oinone-tutorials-boot
+  main:
+    allow-circular-references: true
+  resources:
+    static-locations: classpath:/static/
+  mvc:
+    default-servlet-handling: true
+  cloud:
+    service-registry:
+      auto-registration:
+        enabled: false
+    config:
+      enabled: false
+      uri: http://127.0.0.1:7001
+      label: master
+      profile: dev
+    nacos:
+      server-addr: http://127.0.0.1:8848
+      discovery:
+        enabled: false
+        namespace:
+        prefix: application
+        file-extension: yml
+      config:
+        enabled: false
+        namespace:
+        prefix: application
+        file-extension: yml
+  data:
+    redis:
+      database: 0
+      host: 127.0.0.1
+      port: 6379
+      timeout: 2000
+      lettuce:
+        pool:
+          enable: true
+          max-idle: 16
+          min-idle: 16
+          max-active: 16
+          max-wait: 20000
+  rocketmq:
+    name-server: 127.0.0.1:9876
+    producer:
+      enableMsgTrace: true
+      customizedTraceTopic: TRACE_PRODUCER
+    consumer:
+      enableMsgTrace: true
+      customizedTraceTopic: TRACE_CONSUMER
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092
+    producer:
+      value-serializer: pro.shushi.pamirs.framework.connectors.event.kafka.marshalling.PamirsKafkaMarshalling
+    consumer:
+      group-id: ${spring.application.name}
+      value-deserializer: pro.shushi.pamirs.framework.connectors.event.kafka.marshalling.PamirsKafkaMarshalling
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      direct:
+        # 消息开启手动确认
+        acknowledge-mode: manual
+  jmx:
+    enabled: false
+dubbo:
+  application:
+    name: oinone-tutorials-boot
+    version: 1.0.0
+    register-consumer: false
+  registry:
+    address: zookeeper://127.0.0.1:2181
+    timeout: 5000
+  protocol:
+    name: dubbo
+    port: -1
+    serialization: pamirs
+    payload: 104857600
+  consumer:
+    timeout: 5000
+  provider:
+    timeout: 5000
+  scan:
+    base-packages: pro.shushi
+  cloud:
+    subscribed-services:
+logging:
+  level:
+    root: info
+    pro.shushi.pamirs.framework.connectors.data.mapper.PamirsMapper: info
+    pro.shushi.pamirs.framework.connectors.data.mapper.GenericMapper: info
+    RocketmqClient: error
+    org.apache.dubbo.registry.zookeeper.ZookeeperRegistry: error
+    org.apache.dubbo.registry.integration.RegistryDirectory: error
+cdn:
+  oss:
+    name: 本地文件系统
+    type: LOCAL
+    bucket:
+    uploadUrl: http://127.0.0.1:${server.port}
+    downloadUrl: http://127.0.0.1:${server.port}
+    validTime: 3600000
+    timeout: 600000
+    active: true
+    referer:
+    localFolderUrl: ./oss
+    appLogoUseCdn: false
+pamirs:
+  framework:
+    data:
+      default-ds-key: pamirs
+      ds-map:
+        base: base
+  datasource:
+    base:
+      driverClassName: com.mysql.cj.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql://127.0.0.1:3306/oinone_base?useSSL=false&allowPublicKeyRetrieval=true&useServerPrepStmts=true&cachePrepStmts=true&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&autoReconnect=true&allowMultiQueries=true
+      username: root
+      password:
+    pamirs:
+      driverClassName: com.mysql.cj.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql://127.0.0.1:3306/oinone_pamirs?useSSL=false&allowPublicKeyRetrieval=true&useServerPrepStmts=true&cachePrepStmts=true&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&autoReconnect=true&allowMultiQueries=true
+      username: root
+      password:
+    biz_data:
+      driverClassName: com.mysql.cj.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql://127.0.0.1:3306/oinone_biz_data?useSSL=false&allowPublicKeyRetrieval=true&useServerPrepStmts=true&cachePrepStmts=true&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&autoReconnect=true&allowMultiQueries=true
+      username: root
+      password:
+  boot:
+    init: true
+    sync: true
+    mode: dev
+    modules:
+      # basic modules
+      - base
+      - sequence
+      - common
+      - expression
+      # capability modules
+      - resource
+      - user
+      - business
+      - management_center
+      - message
+      - file
+      - trigger
+      - apps
+      - sys_setting
+  zookeeper:
+    zkConnectString: 127.0.0.1:2181
+    zkSessionTimeout: 60000
+    rootPath: /oinone
+  record:
+    sql:
+      store: ./sql-records
+  view:
+    auto-create-default-view: true
+  file:
+    auto-create-template: false
+    auto-upload-logo: false
+  event:
+    enabled: true
+    schedule:
+      enabled: true
+    notify-map:
+      system: ROCKETMQ
+      biz: ROCKETMQ
+      logger: ROCKETMQ
+  eip:
+    enabled: true
+    open-api:
+      enabled: true
+      route:
+        host: 127.0.0.1
+        port: 8193
+        aes-key: wQl/UWcBMP/2xh8mmDgi0ZsA7E0v2TEiM2UGrjtXfBI=
+  elastic:
+    url: 127.0.0.1:9200
+  #    version: 7
+  #    user: admin
+  #    password: admin
+  #    trustSelfSigned: true
+  #    useSSL: true
+  channel:
+    zkServers: 127.0.0.1:2181
+    packages:
+      - pro.shushi.pamirs
