@@ -1,0 +1,21 @@
+services:
+  frontend:
+    container_name: oinone-frontend-only
+    image: registry.cn-hangzhou.aliyuncs.com/adamancyzhang-open/designer-frontend-${OINONE_FRONTEND_VERSION:-v7.2}
+    pull_policy: always
+    privileged: true
+    restart: always
+    environment:
+      BACKEND_HTTP_ADDRESS: ${OINONE_BIZ_BACKEND_SERVER:-}
+      OPENAPI_HTTP_ADDRESS: ${OINONE_BIZ_OPENAPI_SERVER:-}
+    ports:
+      # 外部访问端口 99
+      - ${OINONE_BIZ_PORT:-99}:80
+    volumes:
+      - ${DOCKER_VOLUME_DIRECTORY:-./volumes}/oss:/opt/pamirs/static
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

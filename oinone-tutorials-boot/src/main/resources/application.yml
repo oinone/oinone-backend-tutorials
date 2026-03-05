@@ -108,13 +108,13 @@ cdn:
     type: LOCAL
     bucket:
     uploadUrl: http://127.0.0.1:${server.port}
-    downloadUrl: http://127.0.0.1:${server.port}
+    downloadUrl: http://127.0.0.1:99
     validTime: 3600000
     timeout: 600000
     active: true
     referer:
-    localFolderUrl: ./oss
-    appLogoUseCdn: false
+    localFolderUrl: ./docker/volumes/oss
+    appLogoUseCdn: true
 pamirs:
   framework:
     data:
@@ -153,11 +153,14 @@ pamirs:
       # capability modules
       - resource
       - user
+      - auth
       - business
       - management_center
       - message
       - file
       - trigger
+      - eip
+      - translate
       - apps
       - sys_setting
   zookeeper:

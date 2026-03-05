@@ -117,6 +117,22 @@
             <artifactId>pamirs-trigger-bridge-tbschedule</artifactId>
         </dependency>
 
+        <!-- eip -->
+        <dependency>
+            <groupId>pro.shushi.pamirs.core</groupId>
+            <artifactId>pamirs-eip2-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>pro.shushi.pamirs.core</groupId>
+            <artifactId>pamirs-eip2-view</artifactId>
+        </dependency>
+
+        <!-- translate -->
+        <dependency>
+            <groupId>pro.shushi.pamirs.core</groupId>
+            <artifactId>pamirs-translate</artifactId>
+        </dependency>
+
         <!-- apps -->
         <dependency>
             <groupId>pro.shushi.pamirs.core</groupId>

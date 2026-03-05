@@ -1,6 +1,12 @@
-# 启动前必读
-## 环境要求
-feature/7.2.0分支，运行环境：JDK17
+# Quick Start
 
-## Oinone Backend Tutorials | Oinone后端教程
-[🫆后端研发手册: https://guide.oinone.top/zh-cn/DevManual/Tutorials/](https://guide.oinone.top/zh-cn/DevManual/Tutorials/)
+## development environment
+
+- branch: master or feature/7.2.0
+- jdk: 17+
+- maven: 3.9.10+
+
+## Oinone Tutorials
+
+- [🫆研发手册 (中文)](https://guide.oinone.top/zh-cn/DevManual/Tutorials/)
+- [🫆Development Manual (English)](https://guide.oinone.top/en/DevManual/Tutorials/)
