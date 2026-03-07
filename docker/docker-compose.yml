@@ -1,7 +1,7 @@
 services:
   frontend:
     container_name: oinone-frontend-only
-    image: registry.cn-hangzhou.aliyuncs.com/adamancyzhang-open/designer-frontend-${OINONE_FRONTEND_VERSION:-v7.2}
+    image: registry.cn-zhangjiakou.aliyuncs.com/oinone/designer-frontend-${OINONE_FRONTEND_VERSION:-v7.2}
     pull_policy: always
     privileged: true
     restart: always
