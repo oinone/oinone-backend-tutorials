@@ -84,6 +84,10 @@
         </dependency>
         <dependency>
             <groupId>pro.shushi.pamirs.core</groupId>
+            <artifactId>pamirs-auth3-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>pro.shushi.pamirs.core</groupId>
             <artifactId>pamirs-business-core</artifactId>
         </dependency>
         <dependency>
