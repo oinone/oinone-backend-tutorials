@@ -173,7 +173,7 @@ pamirs:
   view:
     auto-create-default-view: true
   file:
-    auto-create-template: false
+    auto-create-template: true
     auto-upload-logo: false
   event:
     enabled: true
