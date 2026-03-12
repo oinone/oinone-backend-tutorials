@@ -12,17 +12,13 @@ import org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfigura
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.ApplicationPidFileWriter;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
-import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.util.StopWatch;
 import pro.shushi.pamirs.meta.annotation.fun.extern.Slf4j;
 
-import java.io.IOException;
-import java.net.InetAddress;
 import java.util.Arrays;
 
 /**
@@ -54,7 +50,7 @@ import java.util.Arrays;
 @EnableDubbo
 public class TutorialsApplication {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         log.info(Arrays.toString(args));
 
         StopWatch stopWatch = new StopWatch();
@@ -64,7 +60,7 @@ public class TutorialsApplication {
 
         System.setProperty("dubbo.application.logger", "slf4j");
 
-        ConfigurableApplicationContext application = new SpringApplicationBuilder(TutorialsApplication.class)
+        new SpringApplicationBuilder(TutorialsApplication.class)
                 .web(WebApplicationType.SERVLET)
                 .listeners(
                         new ApplicationPidFileWriter("oinone-tutorials-boot.pid")
@@ -73,16 +69,11 @@ public class TutorialsApplication {
 
         stopWatch.stop();
 
-        Environment env = application.getEnvironment();
-        String ip = InetAddress.getLocalHost().getHostAddress();
-        String port = env.getProperty("server.port");
         double totalTime = stopWatch.getTotalTimeSeconds();
         log.info("*****************************************************************************");
         log.info("*                                                                           *");
         log.info("*                                                                           *");
-        log.info("* 启动成功，耗时 {} ", String.format("%.3f", totalTime) + "s,  Access URLs:");
-        log.info("* Local:   http://localhost:" + port);
-        log.info("* Network: http://" + ip + ":" + port);
+        log.info("* 启动成功，耗时 {} ", String.format("%.3f", totalTime) + "s");
         log.info("*                                                                           *");
         log.info("*                                                                           *");
         log.info("*****************************************************************************");
