@@ -193,11 +193,6 @@ pamirs:
         aes-key: wQl/UWcBMP/2xh8mmDgi0ZsA7E0v2TEiM2UGrjtXfBI=
   elastic:
     url: 127.0.0.1:9200
-  #    version: 7
-  #    user: admin
-  #    password: admin
-  #    trustSelfSigned: true
-  #    useSSL: true
   channel:
     zkServers: 127.0.0.1:2181
     packages:
