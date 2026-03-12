@@ -56,7 +56,7 @@ public class TutorialsApplication {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
-        log.info("Oinone Tutorials App Starting ...");
+        log.info("Oinone Tutorials Application Starting...");
 
         System.setProperty("dubbo.application.logger", "slf4j");
 
@@ -73,7 +73,7 @@ public class TutorialsApplication {
         log.info("*****************************************************************************");
         log.info("*                                                                           *");
         log.info("*                                                                           *");
-        log.info("* 启动成功，耗时 {} ", String.format("%.3f", totalTime) + "s");
+        log.info("* Oinone Application startup successful, time taken: {} ", String.format("%.3f", totalTime) + "s");
         log.info("*                                                                           *");
         log.info("*                                                                           *");
         log.info("*****************************************************************************");
