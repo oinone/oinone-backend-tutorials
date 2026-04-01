@@ -1,44 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>pro.shushi.oinone.trutorials</groupId>
-    <artifactId>oinone-trutorials</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <groupId>pro.shushi.oinone</groupId>
+    <artifactId>oinone-backend-tutorials</artifactId>
+    <version>7.2.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <java.version>1.8</java.version>
-        <maven.compiler.version>3.8.1</maven.compiler.version>
-        <maven.surefire.version>2.22.2</maven.surefire.version>
-        <maven.source.version>3.2.1</maven.source.version>
-        <maven.install.version>3.0.0-M1</maven.install.version>
-        <spring.boot.version>2.3.8.RELEASE</spring.boot.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <java.version>17</java.version>
+        <java.vendor>Oracle</java.vendor>
+        <maven.compiler.version>3.14.0</maven.compiler.version>
+        <maven.surefire.version>3.5.3</maven.surefire.version>
+        <maven.source.version>3.3.1</maven.source.version>
+        <maven.install.version>3.1.4</maven.install.version>
+        <maven.deploy.version>3.1.4</maven.deploy.version>
+        <maven.war.version>3.4.0</maven.war.version>
 
+        <spring.boot.version>3.3.13</spring.boot.version>
         <mysql.connector.version>8.0.16</mysql.connector.version>
 
-        <!-- 平台基础 -->
-        <pamirs.middleware.version>6.2.12</pamirs.middleware.version>
-        <pamirs.k2.version>6.2.12</pamirs.k2.version>
-        <pamirs.framework.version>6.2.12</pamirs.framework.version>
-        <pamirs.boot.version>6.2.12</pamirs.boot.version>
+        <!-- oinone -->
+        <oinone-pamirs.version>7.2.0</oinone-pamirs.version>
 
-        <!-- 平台功能 -->
-        <pamirs.core.version>6.2.12</pamirs.core.version>
-
-        <oinone.trutorials.version>1.0.0-SNAPSHOT</oinone.trutorials.version>
+        <!-- distribution -->
+        <pamirs.distribution.version>7.2.0</pamirs.distribution.version>
     </properties>
 
     <modules>
-        <module>trutorials-boot</module>
+        <module>oinone-tutorials-boot</module>
     </modules>
 
     <dependencyManagement>
@@ -46,36 +43,42 @@
             <dependency>
                 <groupId>pro.shushi.pamirs</groupId>
                 <artifactId>pamirs-k2</artifactId>
-                <version>${pamirs.k2.version}</version>
+                <version>${oinone-pamirs.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>pro.shushi.pamirs</groupId>
                 <artifactId>pamirs-framework</artifactId>
-                <version>${pamirs.framework.version}</version>
+                <version>${oinone-pamirs.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>pro.shushi.pamirs.boot</groupId>
                 <artifactId>pamirs-boot-dependencies</artifactId>
-                <version>${pamirs.boot.version}</version>
+                <version>${oinone-pamirs.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>pro.shushi.pamirs.core</groupId>
                 <artifactId>pamirs-core-dependencies</artifactId>
-                <version>${pamirs.core.version}</version>
+                <version>${oinone-pamirs.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
             <dependency>
                 <groupId>pro.shushi.pamirs.middleware</groupId>
                 <artifactId>pamirs-middleware-dependencies</artifactId>
-                <version>${pamirs.middleware.version}</version>
+                <version>${oinone-pamirs.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>pro.shushi.pamirs</groupId>
+                <artifactId>pamirs-distribution</artifactId>
+                <version>${pamirs.distribution.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -119,7 +122,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
-                    <version>${maven.install.version}</version>
+                    <version>${maven.deploy.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -129,10 +132,49 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <compilerArgument>-parameters</compilerArgument>
                     <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.source}</target>
+                    <target>${maven.compiler.target}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
+                    <fork>true</fork>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                        <arg>-Xmaxerrs</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.jvm=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.launcher=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.platform=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.resources=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.source.tree=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=java.base/jdk.internal.access=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=java.xml/com.sun.org.apache.xpath.internal.jaxp=ALL-UNNAMED</arg>
+
+                        <arg>--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>
+                        <arg>--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>
+                        <arg>--add-exports=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
+                        <arg>--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</arg>
+                        <arg>--add-exports=jdk.compiler/com.sun.tools.javac.jvm=ALL-UNNAMED</arg>
+                        <arg>--add-exports=jdk.compiler/com.sun.tools.javac.launcher=ALL-UNNAMED</arg>
+                        <arg>--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</arg>
+                        <arg>--add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED</arg>
+                        <arg>--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED</arg>
+                        <arg>--add-exports=jdk.compiler/com.sun.tools.javac.platform=ALL-UNNAMED</arg>
+                        <arg>--add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
+                        <arg>--add-exports=jdk.compiler/com.sun.tools.javac.resources=ALL-UNNAMED</arg>
+                        <arg>--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED</arg>
+                        <arg>--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>
+                        <arg>--add-exports=jdk.compiler/com.sun.source.tree=ALL-UNNAMED</arg>
+                        <arg>--add-exports=java.base/jdk.internal.access=ALL-UNNAMED</arg>
+                        <arg>--add-exports=java.xml/com.sun.org.apache.xpath.internal.jaxp=ALL-UNNAMED</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
             <plugin>
