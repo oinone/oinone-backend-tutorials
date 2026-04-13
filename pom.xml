@@ -28,7 +28,7 @@
         <mysql.connector.version>8.0.16</mysql.connector.version>
 
         <!-- oinone -->
-        <oinone-pamirs.version>7.2.0</oinone-pamirs.version>
+        <oinone-pamirs.version>7.2.1</oinone-pamirs.version>
 
         <!-- distribution -->
         <pamirs.distribution.version>7.2.0</pamirs.distribution.version>
